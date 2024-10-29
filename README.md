@@ -5,3 +5,13 @@
 
 ## Installation
 
+- Create local clone of this repository
+- Slicer3d > File > Application Settings > Modules
+- Add repository path to "Additional module paths"
+- Restart Slicer3d
+
+## Modules
+
+### ACPC
+
+A module to calculate the AC-PC transformation based on a user-defined AC-PC line and midpoint.
