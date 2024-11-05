@@ -311,8 +311,6 @@ class ACPCLogic(ScriptedLoadableModuleLogic):
         :param midpoint: a midline plane
         """
 
-        print(folderNode)
-
         if not acpcLine or not midlinePoints:
             raise ValueError("You must provide both an AC-PC line and a midline plane.")
 
@@ -379,15 +377,19 @@ class ACPCLogic(ScriptedLoadableModuleLogic):
         return np.array([*ac]), np.array([*pc])
     
     def get_acpc_transformation(self, ac, pc, ih, center_on="MC"):
+
         # Y axis
         pcAc = ac - pc
         yAxis = pcAc / np.linalg.norm(pcAc)
+
         # X axis
-        acIhDir = np.abs(ih - ac)
+        acIhDir = ih - ac
         xAxis = np.cross(yAxis, acIhDir)
         xAxis /= np.linalg.norm(xAxis)
+
         # Z axis
         zAxis = np.cross(xAxis, yAxis)
+
         # Rotation
         rotation = np.vstack([xAxis, yAxis, zAxis])
 
